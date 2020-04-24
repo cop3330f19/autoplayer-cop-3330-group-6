@@ -16,13 +16,13 @@ void PlaylistMenu(){
              << "Selection: ";
         cin >> choice3;
         if (choice3==1){
-        // create new empty list function
+        // create new empty list function (need)
         }
         else if (choice3==2){
-        // merge 2 playlist function
+        // merge 2 playlist function (need) 
         }
         else if (choice3==3){
-        // intersect 2 playlist function
+        // intersect 2 playlist function (need)
         }
         else if (choice3!=4){
            cout << "Invalid Entry. Please input a valid entry." << endl << endl;
@@ -33,7 +33,7 @@ void PlaylistMenu(){
 void SongMenu(){
     int choice3;
     do{
-        cout<<"You are now playing: " /*cout playlist name*/ << endl;
+        cout<<"You are now playing: " /*cout playlist name (need)*/ << endl;
             <<"1 - Add a song"<<endl
             <<"2 - Delete a song"<<endl
             <<"3 - Play a song"<<endl
@@ -43,22 +43,22 @@ void SongMenu(){
             <<"Selection: ";
         cin>>choice3;
         if (choice3==1){
-            //run add song function
+            //run add song function (need)
         }
         else if (choice3==2){
-            //run delete song function
+            //run delete song function (need)
         }
         else if (choice3==3){
-            //run play song function
+            //run play song function (need)
         }
         else if (choice3==4){
-            //run set mode function (depending on how function is written a menu may need to be created as well)
+            //run set mode function (depending on how function is written a menu may need to be created as well) (need)
         }
         else if (choice3==5){
-            //run print function for all songs in playlist
+            //run print function for all songs in playlist (need)
         }
         else if (choice3==6){
-            //exit song menu back to main menu this if will be blank to prevent the else from printing Invalid Choice message
+            //exit song menu back to main menu this if will be blank to prevent the else from printing Invalid Choice message (need)
         }
         else{
             cout<<"Invalid Choice" << endl << endl;
@@ -68,11 +68,11 @@ void SongMenu(){
 }
 
 int main(){
-    //open playlist file and store data in vectors, create a count for the vector as well
+    //open playlist file and store data in vectors, create a count for the vector as well (need)
     int choice1, choice2;
     bool choice2_flag=false;
     do{
-        // cout # of playlists
+        // cout # of playlists (need)
         cout << "1 - Open an exisiting playlist" << endl
              << "2 - Create new list" << endl
              << "3 - Exit" << endl
@@ -80,17 +80,19 @@ int main(){
         cin >> choice1;
         
         if(choice1==1){
-            //open existing playlist menu
+            //open existing playlist menu (need)
             do{
-                //display list of playlists to choose from
+                //display list of playlists to choose from (need)
                 cin >> choic2;
-                for(int i=0; i< /*count of playlist vector*/; i++){// for loop to check to see if choice matches any playlist
-                   if(/*choice == playlist*/){
+                for(int i=0; i< /*count of playlist vector (need)*/; i++){// for loop to check to see if choice matches any playlist
+                   if(/*choice == playlist (need)*/){
                          SongMenu();//runs song menu
                          choice2_flag=true;
                     }
                 }
-                // validator will go here as well
+                if (choice2_flag==false){
+                    cout << "Invalid Choice" << endl << endl;
+                }
             }while(choice2_flag==false);
         }
         
