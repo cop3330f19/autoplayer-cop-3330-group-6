@@ -1,3 +1,11 @@
+/**************************************************************
+ * Name of the file: Song.h                                   *
+ * Group 6: Ra'Caria Burgess, Janei Elliston,                 *
+ *          Michael Mondelice, Michael Parrish                *
+ * Date last edited: 4/24/2020                                *
+ * Purpose of the class: To determine that two songs are equal*
+ * if they have same name and artist.                         *                           
+ **************************************************************/
 #ifndef SONG_H
 #define SONG_H
 
@@ -5,8 +13,10 @@
 #include <string>
 #include <fstream>
 
-// Song is a simple class that stores a title and artist as strings
-// it just provides i/o operators, == operator, constructors and Set function
+/***************************************************************************
+ Song is a simple class that stores a title and artist as strings
+ it just provides i/o operators, == operator, constructors and Set function
+ ***************************************************************************/
 class Song
 {
 	public:
@@ -45,3 +55,4 @@ class Song
 };
 
 #endif
+
