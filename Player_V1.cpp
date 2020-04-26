@@ -17,6 +17,17 @@
 #include "StringHelper.h"
 #include "Song.h"
 
+int count;
+
+void createNewList(vector<Playlist>&lists){ //accepts a vector as arguement and creates a new playlist.
+   lists.push_back(list);
+   count++;
+   string name;
+   cout <<"Enter Name for Playlist: ";
+   cin >> name;
+   lists[count].setName(name);
+}
+
 using namespace std;
 void parse(vector<string>&temp,string songLine){
    string word = ""; 
@@ -35,7 +46,7 @@ void parse(vector<string>&temp,string songLine){
    }  
    temp.push_back(word);
 }
-void PlaylistMenu(){
+void PlaylistMenu(vector<Playlist>&list){
     int choice3;
     do{
         cout << "1 - Create new empty list" << endl
@@ -44,9 +55,8 @@ void PlaylistMenu(){
              << "Selection: ";
         cin >> choice3;
         if (choice3==1){
-        // create new empty list function (need)
-        // cout << "Please select a playlist from below: " << endl;
-        // How do you print out playlist ?
+           createNewList(list); // creates a new playlist
+           SongMenu(count); // opens song menu afterwards so that songs can be added to list.
         }
         else if (choice3==2){
         // merge 2 playlist function (need)
@@ -58,13 +68,14 @@ void PlaylistMenu(){
         else if (choice3==3){
         // intersect 2 playlist function (need)
         }
+       
         else if (choice3!=4){
            cout << "Invalid Entry. Please input a valid entry."  << endl;
         }
     }while(choice3!=4);
 }
 
-void SongMenu(){
+void SongMenu(int location){ // menu takes integer argument so that the specific playlist vector can be referenced by functions in this menu (example: mp3[location].addSong()) 
     Playlist List;
     Song S;
     string title, artist, album, year, len; // IS THIS NEEDED ?? 
@@ -207,7 +218,7 @@ int main(){
                 cin >> choice2;
                 for(int i=0; i< mp3.size(); i++){// for loop to check to see if choice matches any playlist
                    if(/*choice == playlist (need)*/1==1){
-                         SongMenu();//runs song menu
+                         SongMenu(i);//runs song menu
                          choice2_flag=true;
                     }
                 }
