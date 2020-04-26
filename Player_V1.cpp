@@ -87,7 +87,7 @@ void SongMenu(){
          P.play();
         }
         else if (choice3==4){
-            //run set mode function (depending on how function is written a menu may need to be created as well) (nee              //run play song function (need)
+            //run set mode function (depending on how function is written a menu may need to be created as well) //run play song function (need)
            //cout << "Enter Mode: \n";
            //cout << "N - Normal\n";
            //cout << "R - Repeat\n"
@@ -142,6 +142,8 @@ int main(){
            //cout<<songLine<<endl;
            vector<string>temp(0);
           parse(temp,songLine);
+           
+           //EXTRA
           // cout<<temp[0]<<endl;
            
         /*  stringstream temp3(temp[3]);
@@ -153,7 +155,7 @@ int main(){
            */
 
            //cout<<temp[0]<<" "<<temp[1]<<" "<<temp[2]<<" "<<temp[3]<<" "<<temp[4]<<endl;
-           Song tempSong(temp[0],temp[1],temp[2],1,2);
+           Song tempSong(temp[0],temp[1],temp[2],atoi(temp[3].c_str()),atoi(temp[4].c_str()));
            tempPlistObj=tempPlistObj+tempSong;
            
          // set tempPlistObj songs     by parsing the song data in each row and put it inin each playlist class object
