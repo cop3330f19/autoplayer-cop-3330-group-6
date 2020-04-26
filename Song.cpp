@@ -17,7 +17,7 @@ using namespace std;
 		title, artist, album, year, length
 		output to console
         **************************************************************/
-	friend ostream& operator<<(ostream& os, const Song& song){
+	ostream& operator<<(ostream& os, const Song& song){
             os << song.title << " " << song.artist << " " << song.album <<
                 " " << song.year << " " << song.length;
         }
@@ -25,7 +25,7 @@ using namespace std;
         /**************************************************************
          output to file
          **************************************************************/
-	friend ofstream& operator<<(ofstream& os, const Song& song){
+	ofstream& operator<<(ofstream& os, const Song& song){
             os << song.title << " " << song.artist << " " << song.album <<
                 " " << song.year << " " << song.length;
         }
@@ -33,20 +33,20 @@ using namespace std;
 		 input the song in the format:
 		 title, artist, album, year, length
          ***************************************************************/
-	friend istream& operator>>(istream& is, Song& song){
+	istream& operator>>(istream& is, Song& song){
             is >> song.title >> song.artist >> song.album >> song.year >> song.length;
         }
             
-	/***************************************************************
+        /***************************************************************
          input from file
          ***************************************************************/
-		friend fstream& operator>>(fstream& is, Song& song){
+		fstream& operator>>(fstream& is, Song& song){
             is >> song.title >> song.artist >> song.album >> song.year >> song.length;
         }
         /*************************************************************** 
 		 compare two song objects for equality
 	 ***************************************************************/
-		friend bool operator==(const Song& lhs, const Song& rhs){
+	 bool operator==(const Song& lhs, const Song& rhs){
             if (lhs.title == rhs.title && lhs.artist == rhs.artist)
                 return true;
             else 
