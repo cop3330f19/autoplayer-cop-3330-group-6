@@ -45,22 +45,29 @@ void PlaylistMenu(){
         cin >> choice3;
         if (choice3==1){
         // create new empty list function (need)
+        // cout << "Please select a playlist from below: " << endl;
+        // How do you print out playlist ?
         }
         else if (choice3==2){
-        // merge 2 playlist function (need) 
+        // merge 2 playlist function (need)
+        // cout << "Which of the following playlists would you like to merge" << endl;
+        // How do you print out playlist ?
+        // 
+        
         }
         else if (choice3==3){
         // intersect 2 playlist function (need)
         }
         else if (choice3!=4){
-           cout << "Invalid Entry. Please input a valid entry." << endl << endl;
+           cout << "Invalid Entry. Please input a valid entry."  << endl;
         }
     }while(choice3!=4);
 }
 
 void SongMenu(){
-    Playlist P;
+    Playlist List;
     Song S;
+    string title, artist, album, year, len; // IS THIS NEEDED ?? 
     char m;
     int choice3;
     do{
@@ -74,30 +81,54 @@ void SongMenu(){
             <<"Selection: ";
         cin>>choice3;
         if (choice3==1){
-            //run add song function (need)
-         
-          P + S;
+            // RUN ADD SONG (need) 
+        // cout << "Song Details\n";
+        // cout << "Title: ";
+        // cin >> title;
+        // cout << "Artist: ";
+        // cin >> artist;
+        // cout << "Album: ";
+        // cin >> album;
+        // cout << "Year: ";
+        // cin >> year;
+        // cout << "Length (in seconds): ";
+        //cin >> len;
+        // 
+        // IDK HOW TO READ INFO BACK INTO FILE
+        // S >> S.title >> S.artist >> S.album >> S.year >> S.length;
+        // STILL TRYING TO FIGURE OUT THE OVERLOAD OPERATOR
+        // List = List + S;
         }
         else if (choice3==2){
             //run delete song function (need)
-          P - S;
+            // cout << "Enter to delete: ";
+            // cout << "Title: ";
+            // cin >> title;
+            // cout << "Artist: ";
+            // cin >> artist;
+            // HOW TO READ INTO SONG
+            // IDK WHAT TO USE IDK HOW TO USE OVERLOAD
+            // List.deleteSong(S);
+            // List = List - S;
+            // cout << "Song successfully deleted" << endl;
+         
         }
         else if (choice3==3){
              //run play song function (need)
-         P.play();
+         List.play();
         }
         else if (choice3==4){
             //run set mode function (depending on how function is written a menu may need to be created as well) //run play song function (need)
-           //cout << "Enter Mode: \n";
-           //cout << "N - Normal\n";
-           //cout << "R - Repeat\n"
-           //cout << "L - Loop" << endl;
-            // cin >> m;
-            // P.setMode(m);
+           cout << "Enter Mode: \n";
+           cout << "N - Normal\n";
+           cout << "R - Repeat\n";
+           cout << "L - Loop" << endl;
+            cin >> m;
+            // List.setMode(m);
         }
         else if (choice3==5){
             //run print function for all songs in playlist (need)
-            // cout << P;
+            // cout << List;
         }
         else if (choice3==6){
             //exit song menu back to main menu this if will be blank to prevent the else from printing Invalid Choice message (need)
@@ -121,48 +152,39 @@ int main(){
        while(!inF.eof()){
         inF>>word;
          
-         //initilize 
+         //initilize temp playlist object to push into the vector of playlist objects
          Playlist tempPlistObj;
          
-          // set tempPlistObj name
+         // set and display temp playlist object name from file
          tempPlistObj.setName(word);
          cout<<word<<endl;
          word+=".playlist";
-           //cout<<word<<endl<<endl;
-         string temp="Country.playlist";
-         inF2.open(temp.c_str());
+        
+         inF2.open(word.c_str());
 
           
         
-         // display tempPlistObj name
+       //created while loop to store the songs for each temp playlist object
          while(!inF2.eof()){
          
            
            getline(inF2,songLine);  
-           //cout<<songLine<<endl;
+     
+           
            vector<string>temp(0);
-          parse(temp,songLine);
+           //passes string vector in parse function BY REFERENCE
+           //I recreated the parse fuaction and disgraded the stringhelper function due to complications
+           parse(temp,songLine);
            
-           //EXTRA
-          // cout<<temp[0]<<endl;
-           
-        /*  stringstream temp3(temp[3]);
-           stringstream temp4(temp[4]);
-
-  
-            temp3 >> temp[3];
-               temp4 >> temp[4];
-           */
-
-           //cout<<temp[0]<<" "<<temp[1]<<" "<<temp[2]<<" "<<temp[3]<<" "<<temp[4]<<endl;
+        
            Song tempSong(temp[0],temp[1],temp[2],atoi(temp[3].c_str()),atoi(temp[4].c_str()));
            tempPlistObj=tempPlistObj+tempSong;
            
-         // set tempPlistObj songs     by parsing the song data in each row and put it inin each playlist class object
+       
          
          }
-         //inF2.close();
-         
+       
+         //pushed temp playlist into the vector a of playlists
         mp3.push_back(tempPlistObj);
          
       }
@@ -183,7 +205,7 @@ int main(){
                 
                 //display list of playlists to choose from (need)
                 cin >> choice2;
-                for(int i=0; i< /*count of playlist vector (need)*/5; i++){// for loop to check to see if choice matches any playlist
+                for(int i=0; i< mp3.size(); i++){// for loop to check to see if choice matches any playlist
                    if(/*choice == playlist (need)*/1==1){
                          SongMenu();//runs song menu
                          choice2_flag=true;
