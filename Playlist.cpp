@@ -21,12 +21,12 @@ using namespace std;
 
 Playlist::Playlist()
 {
-    songnumber = 0;
+    songs = 0;
 }
 
 Playlist::Playlist(string name)
 {
-    songnumber = 0;
+    songs= 0;
 
     this->title = name;
     string song, artist,album, line;
@@ -45,7 +45,7 @@ Playlist::Playlist(string name)
 
         s.set(song,artist,album,song_length,year);
         addSong(s);
-        writeToFile();
+        writeF();
     }
 
 }
@@ -139,7 +139,7 @@ Playlist Playlist::merge(Playlist & p)
     for (int i = 0; i < v.size() ; i++)
     {
         p1.addSong(v[i]);
-        p1.appendToFile(v[i]);
+        p1.AttachToFile(v[i]);
     }
     return p1;
 
@@ -147,7 +147,7 @@ Playlist Playlist::merge(Playlist & p)
 
 //finds what play mode is selected
 
-int Playlist::getPlayingMode()
+int Playlist::getMode()
 {
     int count = 0;
     if(mode == 0)
@@ -172,16 +172,16 @@ void Playlist::play()
 {
     if(mode == 0 || mode == 2)
     {
-        cout << playlist[songnumber] << endl;
-        songnumber++;
+        cout << playlist[songs] << endl;
+        songs++;
     }
     if(mode == 1)
-         cout << playlist[songnumber] << endl;
-    if (mode == 2 && songnumber == playlist.size())
+         cout << playlist[songs] << endl;
+    if (mode == 2 && songs == playlist.size())
     {
         songnumber = 0;
     }
-    if (mode == 0 && songnumber == playlist.size())
+    if (mode == 0 && songs == playlist.size())
     {
         cout << " END OF PLAYLIST" << endl;
         return;
@@ -191,24 +191,24 @@ void Playlist::play()
 
 
 // sets player mode Normal Repeat Loop
-void Playlist::setMode(char playingMode)
+void Playlist::setMode(char M)
 {
-    if(playingMode == 'N')
+    if(M == 'N')
         mode = 0;
-    if(playingMode == 'R')
+    if(M == 'R')
         mode = 1;
-    if(playingMode == 'L')
+    if(M  == 'L')
         mode = 2;
 }
 
-void Playlist::appendToFile(Song song)
+void Playlist::AttachToFile(Song song)
 {
     ofstream file;
     file.open((StringHelper::stou(title) + ".playlist").c_str(), ios::app);
     file << song;
     
 }
-void Playlist::writeToFile()
+void Playlist::writeF()
 {
     ofstream file;
     file.open((StringHelper::stou(title) + ".playlist").c_str());
@@ -234,16 +234,9 @@ ostream& operator<<(ostream& os, const Playlist& playlist)
     playlist = p.playlist;
  }
 
-void Playlist::printPlaylist()
+void Playlist::print()
 {
     for(int i = 0; i < playlist.size(); i++)
         cout << playlist[i] << endl;
 
 }
- 
-Playlist::Playlist(){
-        name = " ";
-        now_playing = 0;
-        play_mode = 'N';
-        playlist = {};
-    }
