@@ -2,7 +2,7 @@
  * Name of the file: Song.h                                   *
  * Group 6: Ra'Caria Burgess, Janei Elliston,                 *
  *          Michael Mondelice, Michael Parrish                *
- * Date last edited: 4/24/2020                                *
+ * Date last edited: 4/26/2020                                *
  * Purpose of the class: To determine that two songs are equal*
  * if they have same name and artist.                         *                           
  **************************************************************/
