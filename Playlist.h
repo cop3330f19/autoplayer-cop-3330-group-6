@@ -67,7 +67,7 @@ class Playlist
    //sets the mode for play function 
    static void setMode(char);
    //pull for checking play mode
-   static int getPlayingMode();
+   static int getMode();
 
    std::vector<Song> getPlaylist();
   // prints all songs in vector
