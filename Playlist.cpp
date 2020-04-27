@@ -2,7 +2,7 @@
  * Name of the file: Song.cpp                                 *
  * Group 6: Ra'Caria Burgess, Janei Elliston,                 *
  *          Michael Mondelice, Michael Parrish                *
- * Date last edited: 4/24/2020                                *
+ * Date last edited: 4/26/2020                                *
  * Purpose of Playlist.cpp: Is to manage the songs, by        *
  * creating                                                   *
  all of the normal functions of a playlist.                   *                           
