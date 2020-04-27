@@ -7,68 +7,74 @@
  all of the normal functions of a playlist.                   *                           
  **************************************************************/
 
-#include <iostream>
+#ifndef PLAYLIST_H
+#define  PLAYLIST_H
 
 #include <string>
-
-#include <vector>
-
- 
-
 #include "Song.h"
+#include <iomanip>
+#include <iostream>
+#include <vector>
+#include <fstream>
 
- 
+class Playlist
+{
+   private:
+   std::string name;
+   std::vector<Song> playlist;
+   static int mode;
+   void writeToFile();
+   int songnumber;
 
-class Playlist {
+   public:
 
-    public:
+   // Constructors
+   Playlist();
+   Playlist(std::string);
+   Playlist(const Playlist &p2);
 
-        Playlist();
+   friend std::ostream& operator<<(std::ostream& os, const Playlist& playlist);
+   //output to file
+   friend std::ofstream& operator<<(std::ofstream& os, const Playlist& playlist);
 
-        void setName(std::string);
+   // input the playlist in the format:
+   // title
+   friend std::istream& operator>>(std::istream& is, Playlist& playlist);
+   //input from file
+   friend std::fstream& operator>>(std::fstream& is, Playlist& playlist);
 
-        std::string getName();
+   void setTitle(std::string);
 
-        void addSong(Song);
-
-        bool deleteSong(Song);
-
-        Playlist intersect(Playlist);
-
-        Playlist merge(Playlist);
-
-        void play();
-
-        void setMode(char);
-
-    private:
-
-        friend class Song;
-
-        std::string name;
-
-        int now_playing;
-
-        char play_mode;
-
-        std::vector<Song> playlist;
-
- 
-
-       
-
- 
-
-        friend std::ostream& operator<<(std::ostream& os, const Playlist& playlist);
-
-        friend Playlist operator+(Playlist p1, Playlist p2);
-
-        friend Playlist operator+(Playlist p, Song s);
-
-        friend Playlist operator-(Playlist p, Song s);
-
- 
+   std::string getTitle() const;
+   //adds song to playlist
+   void addSong(Song song);
+   //deletes song from playlist
+   bool deleteSong(Song & song);
+   // Adds song to playlist current playlist
+   Playlist friend operator+(Playlist &p ,Song &s);
+   // concatenation of the two playlist objects 
+   Playlist friend operator+(Playlist & playlist , Playlist & p2);
+   //removing a song(s) from a playlist
+   Playlist friend operator-(Playlist &p , Song & song);
 
    
+   Playlist intersect(Playlist & Playlist);
+  
+   Playlist merge(Playlist & Playlist);
+   
+   //plays next indexed song
+   void play();
+   //sets the mode for play function 
+   static void setMode(char);
+   //pull for checking play mode
+   static int getPlayingMode();
+
+   std::vector<Song> getPlaylist();
+  // prints all songs in vector
+  void printPlaylist();
+
+  void appendToFile(Song song);
 
 };
+
+#endif
