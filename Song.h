@@ -13,10 +13,8 @@
 #include <string>
 #include <fstream>
 
-/***************************************************************************
- Song is a simple class that stores a title and artist as strings
- it just provides i/o operators, == operator, constructors and Set function
- ***************************************************************************/
+// Song is a simple class that stores a title and artist as strings
+// it just provides i/o operators, == operator, constructors and Set function
 class Song
 {
 	public:
@@ -39,20 +37,20 @@ class Song
 
 		// constructors
 		Song( );
-		Song(std::string title, std::string artist, std::string album, int length, int year);
+		Song(std::string title, std::string artist, std::string album, int year, int length);
+		Song(std::string title, std::string artist);
 
 		// set the song
-		void set(std::string title, std::string artist, std::string album, int length, int year);
+		void set(std::string title, std::string artist, std::string album, int year, int length);
 
 	private:
 
-
+		int year;
+		int length; //lenth is stored in # of seconds
 		std::string title;
 		std::string artist;
 		std::string album;
-		int length; // length in seconds
-		int year;
+		
 };
 
 #endif
-
