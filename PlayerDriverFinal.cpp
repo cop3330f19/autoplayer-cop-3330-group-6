@@ -90,7 +90,7 @@ int main(){
     //SELCTION CONTROLS
     int sel2, choice, choice1, choice2;
     string C, C2;
-    char s, m, sel;
+    char m, sel;
   
     //PLAYLIST
     string title, artist, album, selection, newP;
