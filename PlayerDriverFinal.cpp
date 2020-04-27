@@ -2,12 +2,10 @@
  * Name of the file: Song.cpp                                 *
  * Group 6: Ra'Caria Burgess, Janei Elliston,                 *
  *          Michael Mondelice, Michael Parrish                *
- * Worked with Amani group 2                                  *
  * Date last edited: 4/24/2020                                *
  * Purpose of Player.cpp: allow users to create new named     8
  * playlist, view all the playlists, merge (intersect)        *
- * exisiting playlists into a new list, and play a playlist.  *
- *  COULDN'T COMPILE AND CHECK DUE TO STRINGHELPER.O FILE     *                                                    ^
+ * exisiting playlists into a new list, and play a playlist.  *                           
  **************************************************************/
 #include <iostream>
 #include <iomanip>
@@ -88,9 +86,9 @@ int main(){
     Song S;
     bool v;
     //SELCTION CONTROLS
-    int sel2, choice, choice1, choice2;
+    int select, sel2, choice, choice1, choice2;
     string C, C2;
-    char m, sel;
+    char s, m, sel;
   
     //PLAYLIST
     string title, artist, album, selection, newP;
@@ -119,23 +117,23 @@ int main(){
          cout << "Please select a playlist from below: " << endl;
                 ShowPlaylist(mp3);
                 cout << "Selection: ";
-                      cin >> sel2;
+                      cin >> select;
             
-            if(sel < 1 || sel > mp3.size())
+            if(select < 1 || select > mp3.size())
                 cout << "Invalid Choice" << endl << endl;
           
-         }while(sel < 1 || sel > mp3.size());
-                      C = mp3[sel-1];
+         }while(sel < 1 || select > mp3.size());
+                      C = mp3[select-1];
                       Playlist List(C);
             do{
                Spot:
-                  cout << "You are now playing: " << endl;
-                        cout << setw(30) << right << "A - Add a song\n";
-                        cout << setw(33) << right <<"D - Delete a song\n";
-                        cout << setw(31) << right <<"P - Play a song\n";
-                        cout << setw(32) << right <<"M - Set the mode\n";
-                        cout << setw(34) << right <<"S - Show all songs\n";
-                        cout << setw(23) << right <<"Q - Quit" << endl;
+                  cout << "You are now playing: " << List.getTitle() << endl;
+                        cout << setw(24) << right << "A - Add a song\n";
+                        cout << setw(27) << right << "D - Delete a song\n";
+                        cout << setw(25) << right << "P - Play a song\n";
+                        cout << setw(24) << right << "M - Set the mode\n";
+                        cout << setw(28) << right << "S - Show all songs\n";
+                        cout << setw(18) << right << "Q - Quit" << endl;
                         cout << "Selection: ";
                         cin  >> sel;
                         sel = toupper(sel);
@@ -180,6 +178,7 @@ int main(){
                             case 'P':{
                                  //play song function
                                  List.play();
+                                
                                  goto Spot;
                             }
                               break;
@@ -221,18 +220,18 @@ int main(){
 
 
         else if(choice1==2){
-            while(choice1 != 1 && choice1 != 2 && choice1 != 3){
+            while(sel2 != 1 && sel2 != 2 && sel2 != 3){
            cout << "1 - Create new empty list" << endl
                 << "2 - Merge 2 existing playlists" << endl
                 << "3 - Intersect 2 existing playlists" << endl
                 << "Selection: ";
-                cin >> choice1;
+                cin >> sel2;
             }
                    cout << "Name of new playlist (cannot contain underscores): ";
                    cin.ignore();
                    getline(cin,newP);
          
-        switch(choice1)
+        switch(sel2)
         {
                   case 1: {
 
@@ -249,9 +248,9 @@ int main(){
                 Playlist PL2(newP);
                 OutputToNewList("Playlist.list", newP);
                    cout << "Playlist 1: ";
-                   cin >> choice1;
+                   cin >> choice;
                        cout << endl;
-                       C = mp3[choice1-1];
+                       C = mp3[choice-1];
                        Playlist p(C);
                        //PL2.merge(p);
                    cout << "Playlist 2: ";
@@ -271,9 +270,9 @@ int main(){
                    Playlist PL2(newP);
                       OutputToNewList("Playlist.list", newP);
                        cout << "Playlist 1: ";
-                           cin >> choice1;
+                           cin >> choice;
                            cout << endl;
-                           C = mp3[choice1-1];
+                           C = mp3[choice-1];
                            Playlist p(C);
                            PL2  = p;
                        cout << "Playlist 2: ";
