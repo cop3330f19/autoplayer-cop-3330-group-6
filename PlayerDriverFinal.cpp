@@ -2,7 +2,7 @@
  * Name of the file: Song.cpp                                 *
  * Group 6: Ra'Caria Burgess, Janei Elliston,                 *
  *          Michael Mondelice, Michael Parrish                *
- * Date last edited: 4/24/2020                                *
+ * Date last edited: 4/26/2020                                *
  * Purpose of Player.cpp: allow users to create new named     8
  * playlist, view all the playlists, merge (intersect)        *
  * exisiting playlists into a new list, and play a playlist.  *                           
