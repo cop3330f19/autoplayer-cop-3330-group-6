@@ -34,7 +34,9 @@ Song::Song(string title, string artist, string album, int length, int year)
     this->length = length;
     this->year = year;
 }
-
+/**************************************************************
+ * set the song	                                                            
+ **************************************************************/
 void Song::set(string title, string artist, string album, int length, int year)
 {
     this->title = title;
@@ -43,12 +45,18 @@ void Song::set(string title, string artist, string album, int length, int year)
     this->length = length;
     this->year = year;
 }
-
+/*************************************************************** 
+ * compare two song objects for equality
+ ***************************************************************/
 bool operator==(const Song& left, const Song& right)
 {
     return (left.title == rhs.title) && (right.artist == right.artist);
 }
-
+/**************************************************************
+ * output the song in the format:
+ * title, artist, album, year, length
+ * output to console
+ **************************************************************/
 ostream& operator<<(ostream& os, const Song& song)
 {
     
@@ -58,7 +66,9 @@ ostream& operator<<(ostream& os, const Song& song)
     
     return os;
 }
-
+/**************************************************************
+ * output to file
+ **************************************************************/
 ofstream& operator<<(ofstream& os, const Song& song)
 {
      os << song.title << "," << song.artist << ',' 
@@ -66,7 +76,10 @@ ofstream& operator<<(ofstream& os, const Song& song)
 
     return os;
 }
-
+/**************************************************************
+ * input the song in the format:
+ * title, artist, album, year, length
+ ***************************************************************/
 istream& operator>>(istream& is, Song& song)
 {
     cout << "Song Details" << endl;
@@ -83,7 +96,9 @@ istream& operator>>(istream& is, Song& song)
     
     return is;
 }
-
+/********************************************************
+ * input from file
+ ********************************************************/
 fstream& operator>>(fstream& is, Song& song)
 {
     is >> song.title >> song.artist >> song.album >> song.year >> song.length;
